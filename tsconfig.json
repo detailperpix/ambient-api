@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 14",
+  "ts-node": {
+    "files": true
+  },
+  "compilerOptions": {
+    /* Basic Options */
+    "lib": [
+      "es2020"
+    ],
+    "module": "commonjs",
+    "target": "es2020",
+    "sourceMap": true,
+    "outDir": "build",
+    "removeComments": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitOverride": true,
+    "useUnknownInCatchVariables": false, // Needed for typescript@4.4.0+
+    /* Additional Checks */
+    "strictNullChecks": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/types/*.d.ts"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "typeRoots": [
+      "src/types",
+      "../node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  /* Advanced Options */
+  "skipLibCheck": true,
+  "forceConsistentCasingInFileNames": true
+}

@@ -1,0 +1,43 @@
+{
+  "name": "node-api-template-ts",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/app.js",
+  "scripts": {
+    "clear": "(if exist build rmdir build /q /s)",
+    "build": "tsc",
+    "watch": "npm i&&npm run clear&&tsc --watch",
+    "dev": "node .",
+    "start": "npm i --only=prod&&node ."
+  },
+  "_moduleAliases": {
+    "@": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanand-tech/node-api-template-ts.git"
+  },
+  "author": "tanand-tech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanand-tech/node-api-template-ts/issues"
+  },
+  "homepage": "https://github.com/tanand-tech/node-api-template-ts#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
+    "module-alias": "^2.2.2",
+    "tslog": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.40",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  }
+}
