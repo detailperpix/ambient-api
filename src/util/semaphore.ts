@@ -1,3 +1,4 @@
+import random from 'random';
 export class Semaphore {
     private held = 0;
     private readonly fair: boolean;
@@ -73,7 +74,8 @@ export class Semaphore {
         const available = this.permits - this.held;
         if (available > 0) {
             const requests = this.queue.filter(({ permits }) => permits <= available);
-            const request = this.fair ? requests.shift() : requests[random(0, requests.length)];
+            // missing random library import
+            const request = this.fair ? requests.shift() : requests[random.integer(0, requests.length)];
             if (request) {
                 this.queue.splice(this.queue.indexOf(request), 1);
                 this.held += request.permits;
