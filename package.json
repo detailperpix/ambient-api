@@ -1,5 +1,5 @@
 {
-  "name": "node-api-template-ts",
+  "name": "ambient-api",
   "version": "0.0.0",
   "description": "",
   "main": "build/app.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanand-tech/node-api-template-ts.git"
+    "url": "git+https://github.com/detailperpix/ambient-api.git"
   },
-  "author": "tanand-tech",
+  "author": "Wirmantono",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tanand-tech/node-api-template-ts/issues"
+    "url": "https://github.com/detailperpix/ambient-api/issues"
   },
-  "homepage": "https://github.com/tanand-tech/node-api-template-ts#readme",
+  "homepage": "https://github.com/detailperpix/ambient-api#readme",
   "dependencies": {
     "@influxdata/influxdb-client": "^1.21.0",
     "@types/pg": "^8.6.1",
@@ -38,6 +38,8 @@
     "mqtt-match": "^2.0.3",
     "pg": "^8.7.1",
     "random": "^3.0.6",
+    "socket.io": "^4.4.0",
+    "socket.io-client": "^4.4.0",
     "tslog": "^3.2.2",
     "uuid": "^8.3.2"
   },
