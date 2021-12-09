@@ -2,8 +2,8 @@ import dotenv = require('dotenv');
 dotenv.config({ path: __dirname + '../.env' });
 import mqtt = require('mqtt');
 import { insertData } from './dbconnector';
-import logger from '../logger'
-import {io} from 'socket.io-client'
+import logger from '../logger';
+import { io } from 'socket.io-client';
 
 type SensorData = {
     deviceId: string;
@@ -13,12 +13,12 @@ type SensorData = {
 };
 
 function subscribeHost(): void {
-    const log = logger('INSERT')
+    const log = logger('INSERT');
     const MQTT_HOST = String(process.env.MQTT_HOST);
     const PORT_NUMBER = Number(process.env.PORT_NUMBER);
     const client = mqtt.connect(`mqtt://${MQTT_HOST}:${PORT_NUMBER}`);
     const topic = `site-a/data/+/temp`;
-    const socket = io("http://localhost:8000");
+    const socket = io('http://localhost:8000');
     client.on('connect', () => {
         log.info(`MQTT Connected`);
 
@@ -34,12 +34,11 @@ function subscribeHost(): void {
 
     client.on('message', function (topic: string, message: string) {
         // write data to influxDB
-        insertData(message);
-        // emit message here
-        socket.emit('newdata');
 
-
-        
+        const parsedData = JSON.parse(message);
+        insertData(parsedData);
+        // emit to server to broadcast real time update
+        socket.emit('newdata', parsedData);
     });
 
     client.on('close', () => {

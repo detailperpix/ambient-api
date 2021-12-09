@@ -4,6 +4,9 @@ import config from 'config';
 import express from 'express';
 import logger from '@/logger';
 import listEndpoints from 'express-list-endpoints';
+import http from 'http';
+
+import { Server } from 'socket.io';
 
 const { port } = config.get<Config.api>('api');
 
@@ -20,7 +23,28 @@ app.use((req, res, next) => {
 });
 app.use('/', api);
 
-app.listen(port, () => {
+const server = http.createServer(app);
+
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:8080',
+        methods: ['GET'],
+        allowedHeaders: ['custom-header'],
+        credentials: true,
+    },
+});
+io.on('connection', (socket) => {
+    log.info('Socket.io - Client connected');
+    socket.on('newdata', (msg) => {
+        log.info('Received event from client.');
+        io.emit('newdata', msg);
+    });
+});
+
+server.listen(port, () => {
     log.info(`API Server started @ port ${port}`);
     log.debug('Listening to routes', listEndpoints(app));
 });
+
+// not used, provide listener implemenetation above instead of in another module
+app.set('socketio', io);
