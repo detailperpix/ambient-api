@@ -1,14 +1,9 @@
-# Typescript Template for Node.js APIs
+# Ambient API
+Node.JS API for Ambient simulation data written in Typescript
 
-Typescript starter template for Node.js APIs
-
-## Installation
-
-Clone from git url
-
-```bash
-git clone https://github.com/tanand-tech/node-api-template-ts.git
-```
+Starting code is based on template provided by tanand-tech
+https://github.com/tanand-tech/node-api-template-ts
+``
 
 ## Usage
 
